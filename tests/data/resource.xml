@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource>
+    <clubs>
+        <item>
+            <id>1</id>
+            <name>Test Club</name>
+            <address>Test club address</address>
+            <active>1</active>
+            <city>
+                <id>1</id>
+                <name>Test city name</name>
+            </city>
+        </item>
+        <item>
+            <id>2</id>
+            <name>Тестовый клуб</name>
+            <address>Адресс тестового клуба</address>
+            <active/>
+            <city>
+                <id>2</id>
+                <name>Санкт-Петербург</name>
+            </city>
+        </item>
+    </clubs>
+</resource>
