@@ -1,8 +1,9 @@
 {
     "name": "vladmeh/xml-utils",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Xml Utils",
     "license": "MIT",
+    "keywords": ["laravel", "xml"],
     "homepage": "https://github.com/vladmeh/xml-utils",
     "authors": [
         {

@@ -31,12 +31,34 @@ class XmlTest extends TestCase
         ],
     ];
 
-    public function testArrayToXmlAttribute()
+    const ROOT_XML_ELEMENT = '<?xml version="1.0" encoding="UTF-8"?><resource/>';
+
+    /**
+     * @test
+     */
+    public function arrayToXml()
     {
-        $this->markTestSkipped('Не реализован');
+        $xml = Xml::arrayToXml(self::TEST_ARRAY, simplexml_load_string(self::ROOT_XML_ELEMENT));
+
+        $this->assertXmlStringEqualsXmlFile('./tests/data/resource.xml', $xml->asXML());
     }
 
-    public function testToArray()
+    /**
+     * @test
+     */
+    public function arrayToXmlAttribute()
+    {
+        $xml = simplexml_load_string(self::ROOT_XML_ELEMENT);
+        $xml->addAttribute('type', 'clubs');
+        $xmlAttr = Xml::arrayToXmlAttribute(self::TEST_ARRAY, $xml);
+
+        $this->assertXmlStringEqualsXmlFile('./tests/data/resource_attr.xml', $xmlAttr->asXML());
+    }
+
+    /**
+     * @test
+     */
+    public function toArray()
     {
         $xml = simplexml_load_file('./tests/data/resource.xml');
         $array = Xml::toArray($xml->clubs);
@@ -45,19 +67,27 @@ class XmlTest extends TestCase
         $this->assertEquals(self::TEST_ARRAY, $array);
     }
 
-    public function testToJson()
+    /**
+     * @test
+     */
+    public function toJson()
     {
-        $this->markTestSkipped('Не реализован');
+        $xml = simplexml_load_file('./tests/data/resource.xml');
+        $json = Xml::toJson($xml);
+
+        $this->assertJson($json);
+        $this->assertJsonStringEqualsJsonFile('./tests/data/resource.json', $json);
     }
 
     /**
      * @test
      */
-    public function arrayToXml()
+    public function to_json_from_xml_with_value_at_attributes(): void
     {
-        $rootElement = '<?xml version="1.0" encoding="UTF-8"?><resource/>';
-        $xml = Xml::arrayToXml(self::TEST_ARRAY, simplexml_load_string($rootElement));
+        $xml = simplexml_load_file('./tests/data/resource_attr.xml');
+        $json = Xml::toJson($xml);
 
-        $this->assertXmlStringEqualsXmlFile('./tests/data/resource.xml', $xml->asXML());
+        $this->assertJson($json);
+        $this->assertJsonStringEqualsJsonFile('./tests/data/resource_attr.json', $json);
     }
 }

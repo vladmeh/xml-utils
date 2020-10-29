@@ -1,0 +1,27 @@
+{
+  "resource": {
+    "type": "clubs",
+    "clubs": [
+      {
+        "active": 1,
+        "address": "Test club address",
+        "city": {
+          "id": 1,
+          "name": "Test city name"
+        },
+        "id": 1,
+        "name": "Test Club"
+      },
+      {
+        "active": "",
+        "address": "Адресс тестового клуба",
+        "city": {
+          "id": 2,
+          "name": "Санкт-Петербург"
+        },
+        "id": 2,
+        "name": "Тестовый клуб"
+      }
+    ]
+  }
+}

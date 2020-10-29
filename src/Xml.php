@@ -11,24 +11,35 @@ class Xml
 
     /**
      * @param array $array
-     * @param \SimpleXMLElement $xml
+     * @param \SimpleXMLElement $element
+     * @param bool $upperNode
      *
      * @return \SimpleXMLElement
      */
-    public static function arrayToXmlAttribute(array $array, \SimpleXMLElement $xml): \SimpleXMLElement
+    public static function arrayToXmlAttribute(array $array, \SimpleXMLElement $element, $upperNode = false): \SimpleXMLElement
     {
         foreach ($array as $key => $value) {
-            if (is_string($key) && is_array($value)) {
-                $node = $xml->addChild(Str::upper($key));
-                static::arrayToXmlAttribute($value, $node);
-            } elseif (is_int($key) && is_array($value)) {
-                static::arrayToXmlAttribute($value, $xml);
+            self::checkKey($key, $upperNode);
+
+            if (is_array($value)) {
+                $node = is_string($key) ? $element->addChild($key) : $element;
+                self::arrayToXmlAttribute($value, $node, $upperNode);
             } else {
-                $xml->addAttribute($key, $value);
+                $element->addAttribute($key, $value);
             }
         }
 
-        return $xml->asXML();
+        return $element;
+    }
+
+    /**
+     * @param $key
+     * @param bool $upperNode
+     */
+    private static function checkKey(&$key, bool $upperNode): void
+    {
+        $key = is_numeric($key) ? 'item' : $key;
+        $key = $upperNode ? Str::upper($key) : $key;
     }
 
     /**
@@ -67,7 +78,7 @@ class Xml
     /**
      * @param $data
      * @param null $result
-     * @param int  $recursionDepth
+     * @param int $recursionDepth
      *
      * @return array|null
      */
@@ -114,15 +125,5 @@ class Xml
         }
 
         return $result;
-    }
-
-    /**
-     * @param $key
-     * @param bool $upperNode
-     */
-    private static function checkKey(&$key, bool $upperNode): void
-    {
-        $key = is_numeric($key) ? 'item' : $key;
-        $key = $upperNode ? Str::upper($key) : $key;
     }
 }
