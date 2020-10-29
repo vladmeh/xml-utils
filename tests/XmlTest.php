@@ -2,31 +2,30 @@
 
 namespace Vladmeh\XmlUtils\Tests;
 
-use SimpleXMLElement;
 use Vladmeh\XmlUtils\Xml;
 
 class XmlTest extends TestCase
 {
     const TEST_ARRAY = [
-        "clubs" => [
+        'clubs' => [
             [
-                "id" => 1,
-                "name" => "Test Club",
-                "address" => "Test club address",
-                "active" => true,
-                "city" => [
-                    "id" => 1,
-                    "name" => "Test city name",
+                'id' => 1,
+                'name' => 'Test Club',
+                'address' => 'Test club address',
+                'active' => true,
+                'city' => [
+                    'id' => 1,
+                    'name' => 'Test city name',
                 ],
             ],
             [
-                "id" => 2,
-                "name" => "Тестовый клуб",
-                "address" => "Адресс тестового клуба",
-                "active" => false,
-                "city" => [
-                    "id" => 2,
-                    "name" => "Санкт-Петербург",
+                'id' => 2,
+                'name' => 'Тестовый клуб',
+                'address' => 'Адресс тестового клуба',
+                'active' => false,
+                'city' => [
+                    'id' => 2,
+                    'name' => 'Санкт-Петербург',
                 ],
             ],
         ],
@@ -34,7 +33,7 @@ class XmlTest extends TestCase
 
     public function testArrayToXmlAttribute()
     {
-
+        $this->markTestSkipped('Не реализован');
     }
 
     public function testToArray()
@@ -48,7 +47,7 @@ class XmlTest extends TestCase
 
     public function testToJson()
     {
-
+        $this->markTestSkipped('Не реализован');
     }
 
     /**
