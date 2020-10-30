@@ -11,7 +11,7 @@
             "email": "mihailov.v@fhclub.ru"
         }
     ],
-    "minimum-stability": "dev",
+    "minimum-stability": "stable",
     "require": {
         "php": "^7.2",
         "ext-simplexml": "*",
