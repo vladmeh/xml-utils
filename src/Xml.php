@@ -25,7 +25,7 @@ class Xml
                 $node = is_string($key) ? $element->addChild($key) : $element;
                 self::arrayToXmlAttribute($value, $node, $upperNode);
             } else {
-                $element->addAttribute($key, $value);
+                $element->addAttribute(Str::lower($key), $value);
             }
         }
 
