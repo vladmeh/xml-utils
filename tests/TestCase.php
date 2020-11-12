@@ -2,20 +2,8 @@
 
 namespace Vladmeh\XmlUtils\Tests;
 
-use Orchestra\Testbench\TestCase as BaseTestCase;
-use Vladmeh\XmlUtils\XmlUtilsServiceProvider;
+use PHPUnit\Framework\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase
 {
-    protected function setUp(): void
-    {
-        parent::setUp();
-    }
-
-    protected function getPackageProviders($app)
-    {
-        return [
-            XmlUtilsServiceProvider::class,
-        ];
-    }
 }

@@ -11,7 +11,6 @@ Generating an array of XML tools, as well as the reverse conversion of XML in th
 
 ## Features
 * php v7.2
-* [Laravel v6.*](https://laravel.com/docs/6.x)
 
 ## Installation
 
@@ -30,8 +29,6 @@ or add the following to your require part within the composer.json:
     }
 }
 ```
-
-> Laravel will automatically register service provider (Vladmeh\XmlUtils\XmlUtilsServiceProvider) and facade when is installed
 
 ## Integration
 

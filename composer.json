@@ -1,9 +1,9 @@
 {
     "name": "vladmeh/xml-utils",
-    "version": "1.1.1",
+    "version": "1.2.0",
     "description": "Xml Utils",
     "license": "MIT",
-    "keywords": ["laravel", "xml"],
+    "keywords": ["php", "xml", "utils"],
     "homepage": "https://github.com/vladmeh/xml-utils",
     "authors": [
         {
@@ -15,11 +15,11 @@
     "require": {
         "php": "^7.2",
         "ext-simplexml": "*",
-        "ext-json": "*"
+        "ext-json": "*",
+        "illuminate/support": "6.*"
     },
     "require-dev": {
-        "phpunit/phpunit": "^8.0",
-        "orchestra/testbench": "^4.0"
+        "phpunit/phpunit": "^8.0"
     },
     "autoload": {
         "psr-4": {
@@ -29,13 +29,6 @@
     "autoload-dev": {
         "psr-4": {
             "Vladmeh\\XmlUtils\\Tests\\": "tests/"
-        }
-    },
-    "extra": {
-        "laravel": {
-            "providers": [
-                "Vladmeh\\XmlUtils\\XmlUtilsServiceProvider"
-            ]
         }
     }
 }
