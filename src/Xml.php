@@ -115,7 +115,7 @@ class Xml
                     && count($temp) == 1
                     && array_key_exists(0, $temp)
                 ) {
-                    $result = $temp[array_keys($temp)[0]];
+                    $result = $temp[array_key_first($temp)];
                 } else {
                     $result = $temp;
                 }
