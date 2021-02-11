@@ -10,7 +10,7 @@
 Generating an array of XML tools, as well as the reverse conversion of XML in the array or json.
 
 ## Features
-* php v7.2
+* php v7.3
 
 ## Installation
 
@@ -20,12 +20,12 @@ Generating an array of XML tools, as well as the reverse conversion of XML in th
 $ composer require vladmeh/xml-utils 
 ```
 
-or add the following to your require part within the composer.json:
+or add the following to your requirement part within the composer.json:
 
 ```json
 {
     "require": {
-        "vladmeh/xml-utils": "^1.*"
+        "vladmeh/xml-utils": "*"
     }
 }
 ```
