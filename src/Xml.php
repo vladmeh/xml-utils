@@ -80,7 +80,7 @@ class Xml
      * @param null $result
      * @param int $recursionDepth
      *
-     * @return array|null
+     * @return mixed
      */
     public static function toArray($data, &$result = null, &$recursionDepth = 0)
     {
@@ -99,7 +99,7 @@ class Xml
                 self::toArray($value, $res, $recursionDepth);
                 $recursionDepth--;
 
-                if ($key === '@attributes' && ($key) || is_array($value)) {
+                if ($key === '@attributes' || is_array($value)) {
                     $result = $res;
                 } else {
                     $result[strtolower($key)] = $res;
@@ -115,7 +115,7 @@ class Xml
                     && count($temp) == 1
                     && array_key_exists(0, $temp)
                 ) {
-                    $result = $temp[array_key_first($temp)];
+                    $result = $temp[array_keys($temp)[0]];
                 } else {
                     $result = $temp;
                 }
