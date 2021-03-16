@@ -2,8 +2,7 @@
 
 namespace Vladmeh\XmlUtils;
 
-use Illuminate\Support\Str;
-use Illuminate\Support\Traits\Macroable;
+use Vladmeh\XmlUtils\Support\Macroable;
 
 class Xml
 {
@@ -25,7 +24,7 @@ class Xml
                 $node = is_string($key) ? $element->addChild($key) : $element;
                 self::arrayToXmlAttribute($value, $node, $upperNode);
             } else {
-                $element->addAttribute(Str::lower($key), $value);
+                $element->addAttribute(mb_strtolower($key, 'UTF-8'), $value);
             }
         }
 
@@ -39,7 +38,7 @@ class Xml
     private static function checkKey(&$key, bool $upperNode): void
     {
         $key = is_numeric($key) ? 'item' : $key;
-        $key = $upperNode ? Str::upper($key) : $key;
+        $key = $upperNode ? mb_strtoupper($key, 'UTF-8') : $key;
     }
 
     /**

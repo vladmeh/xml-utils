@@ -1,6 +1,6 @@
 {
     "name": "vladmeh/xml-utils",
-    "version": "2.0.0",
+    "version": "2.1.0",
     "description": "Xml Utils",
     "license": "MIT",
     "keywords": ["php", "xml", "utils"],
@@ -15,8 +15,7 @@
     "require": {
         "php": "^7.3|^8.0",
         "ext-simplexml": "*",
-        "ext-json": "*",
-        "illuminate/support": ">=6.20"
+        "ext-json": "*"
     },
     "require-dev": {
         "phpunit/phpunit": "^8.5|^9.3"
