@@ -70,6 +70,18 @@ class XmlTest extends TestCase
     /**
      * @test
      */
+    public function to_array_from_xml_with_value_at_attributes(): void
+    {
+        $xml = simplexml_load_file('./tests/data/resource_attr.xml');
+        $array = Xml::toArray($xml->clubs);
+
+        $this->assertIsArray($array);
+        $this->assertEquals(self::TEST_ARRAY, $array);
+    }
+
+    /**
+     * @test
+     */
     public function toJson()
     {
         $xml = simplexml_load_file('./tests/data/resource.xml');

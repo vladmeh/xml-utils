@@ -15,7 +15,7 @@ class Xml
      *
      * @return \SimpleXMLElement
      */
-    public static function arrayToXmlAttribute(array $array, \SimpleXMLElement $element, $upperNode = false): \SimpleXMLElement
+    public static function arrayToXmlAttribute(array $array, \SimpleXMLElement $element, bool $upperNode = false): \SimpleXMLElement
     {
         foreach ($array as $key => $value) {
             self::checkKey($key, $upperNode);
@@ -24,7 +24,7 @@ class Xml
                 $node = is_string($key) ? $element->addChild($key) : $element;
                 self::arrayToXmlAttribute($value, $node, $upperNode);
             } else {
-                $element->addAttribute(mb_strtolower($key, 'UTF-8'), $value);
+                $element->addAttribute(\mb_strtolower($key, 'UTF-8'), $value);
             }
         }
 
@@ -38,7 +38,7 @@ class Xml
     private static function checkKey(&$key, bool $upperNode): void
     {
         $key = is_numeric($key) ? 'item' : $key;
-        $key = $upperNode ? mb_strtoupper($key, 'UTF-8') : $key;
+        $key = $upperNode ? \mb_strtoupper($key, 'UTF-8') : $key;
     }
 
     /**
@@ -48,7 +48,7 @@ class Xml
      *
      * @return \SimpleXMLElement
      */
-    public static function arrayToXml($data, \SimpleXMLElement $element, $upperNode = false): \SimpleXMLElement
+    public static function arrayToXml($data, \SimpleXMLElement $element, bool $upperNode = false): \SimpleXMLElement
     {
         foreach ($data as $key => $value) {
             self::checkKey($key, $upperNode);
@@ -81,7 +81,7 @@ class Xml
      *
      * @return mixed
      */
-    public static function toArray($data, &$result = null, &$recursionDepth = 0)
+    public static function toArray($data, &$result = null, int &$recursionDepth = 0)
     {
         if (is_object($data)) {
             if ($recursionDepth == 0) {
