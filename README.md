@@ -10,7 +10,7 @@
 Generating an array of XML tools, as well as the reverse conversion of XML in the array or json.
 
 ## Features
-* php v7.3
+* php v7.4
 
 ## Installation
 
