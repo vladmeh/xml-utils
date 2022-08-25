@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.com/vladmeh/xml-utils.svg?branch=main)](https://travis-ci.com/vladmeh/xml-utils)
 [![StyleCI](https://github.styleci.io/repos/308275324/shield?branch=main)](https://github.styleci.io/repos/308275324?branch=main)
-[![Latest Stable Version](https://poser.pugx.org/vladmeh/xml-utils/v)](//packagist.org/packages/vladmeh/xml-utils) 
+[![Latest Stable Version](https://poser.pugx.org/vladmeh/xml-utils/v)](//packagist.org/packages/vladmeh/xml-utils)
 [![Codacy Badge](https://app.codacy.com/project/badge/Grade/80ea8ea3166d4188b847920d6b065c65)](https://www.codacy.com/gh/vladmeh/xml-utils/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=vladmeh/xml-utils&amp;utm_campaign=Badge_Grade)
 [![Daily Downloads](https://poser.pugx.org/vladmeh/xml-utils/d/daily)](//packagist.org/packages/vladmeh/xml-utils)
 [![License](https://poser.pugx.org/vladmeh/xml-utils/license)](//packagist.org/packages/vladmeh/xml-utils)
@@ -10,6 +10,7 @@
 Generating an array of XML tools, as well as the reverse conversion of XML in the array or json.
 
 ## Features
+
 * php v7.4
 
 ## Installation
@@ -17,7 +18,7 @@ Generating an array of XML tools, as well as the reverse conversion of XML in th
 ### Composer
 
 ```bash
-$ composer require vladmeh/xml-utils 
+composer require vladmeh/xml-utils 
 ```
 
 or add the following to your requirement part within the composer.json:
