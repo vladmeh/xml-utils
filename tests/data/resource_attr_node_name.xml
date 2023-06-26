@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resource type="clubs">
+    <clubs>
+        <club id="1" name="Test Club" address="Test club address" active="1">
+            <city id="1" name="Test city name"/>
+        </club>
+        <club id="2" name="Тестовый клуб" address="Адресс тестового клуба" active="">
+            <city id="2" name="Санкт-Петербург"/>
+        </club>
+    </clubs>
+</resource>

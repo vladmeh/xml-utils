@@ -36,11 +36,38 @@ class XmlTest extends TestCase
     /**
      * @test
      */
+    public function arrayToXml_with_node_name(): void
+    {
+        $xml = Xml::arrayToXml(
+            self::TEST_ARRAY,
+            simplexml_load_string(self::ROOT_XML_ELEMENT),
+            false,
+            'club'
+        );
+
+        $this->assertXmlStringEqualsXmlFile('./tests/data/resource_node_name.xml', $xml->asXML());
+    }
+
+    /**
+     * @test
+     */
     public function arrayToXml()
     {
         $xml = Xml::arrayToXml(self::TEST_ARRAY, simplexml_load_string(self::ROOT_XML_ELEMENT));
 
         $this->assertXmlStringEqualsXmlFile('./tests/data/resource.xml', $xml->asXML());
+    }
+
+    /**
+     * @test
+     */
+    public function arrayToXmlAttribute_with_node_name(): void
+    {
+        $xml = simplexml_load_string(self::ROOT_XML_ELEMENT);
+        $xml->addAttribute('type', 'clubs');
+        $xmlAttr = Xml::arrayToXmlAttribute(self::TEST_ARRAY, $xml, false, 'club');
+
+        $this->assertXmlStringEqualsXmlFile('./tests/data/resource_attr_node_name.xml', $xmlAttr->asXML());
     }
 
     /**
@@ -58,18 +85,6 @@ class XmlTest extends TestCase
     /**
      * @test
      */
-    public function toArray()
-    {
-        $xml = simplexml_load_file('./tests/data/resource.xml');
-        $array = Xml::toArray($xml->clubs);
-
-        $this->assertIsArray($array);
-        $this->assertEquals(self::TEST_ARRAY, $array);
-    }
-
-    /**
-     * @test
-     */
     public function to_array_from_xml_with_value_at_attributes(): void
     {
         $xml = simplexml_load_file('./tests/data/resource_attr.xml');
@@ -82,13 +97,13 @@ class XmlTest extends TestCase
     /**
      * @test
      */
-    public function toJson()
+    public function toArray()
     {
         $xml = simplexml_load_file('./tests/data/resource.xml');
-        $json = Xml::toJson($xml);
+        $array = Xml::toArray($xml->clubs);
 
-        $this->assertJson($json);
-        $this->assertJsonStringEqualsJsonFile('./tests/data/resource.json', $json);
+        $this->assertIsArray($array);
+        $this->assertEquals(self::TEST_ARRAY, $array);
     }
 
     /**
@@ -101,5 +116,17 @@ class XmlTest extends TestCase
 
         $this->assertJson($json);
         $this->assertJsonStringEqualsJsonFile('./tests/data/resource_attr.json', $json);
+    }
+
+    /**
+     * @test
+     */
+    public function toJson()
+    {
+        $xml = simplexml_load_file('./tests/data/resource.xml');
+        $json = Xml::toJson($xml);
+
+        $this->assertJson($json);
+        $this->assertJsonStringEqualsJsonFile('./tests/data/resource.json', $json);
     }
 }

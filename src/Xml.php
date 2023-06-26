@@ -8,21 +8,28 @@ class Xml
 {
     use Macroable;
 
+    const NODE_NAME = 'item';
+
     /**
      * @param array $array
      * @param \SimpleXMLElement $element
      * @param bool $upperNode
-     *
+     * @param string $nodeName
      * @return \SimpleXMLElement
      */
-    public static function arrayToXmlAttribute(array $array, \SimpleXMLElement $element, bool $upperNode = false): \SimpleXMLElement
+    public static function arrayToXmlAttribute(
+        array             $array,
+        \SimpleXMLElement $element,
+        bool              $upperNode = false,
+        string            $nodeName = self::NODE_NAME
+    ): \SimpleXMLElement
     {
         foreach ($array as $key => $value) {
-            self::checkKey($key, $upperNode);
+            self::checkKey($key, $upperNode, $nodeName);
 
             if (is_array($value)) {
                 $node = is_string($key) ? $element->addChild($key) : $element;
-                self::arrayToXmlAttribute($value, $node, $upperNode);
+                self::arrayToXmlAttribute($value, $node, $upperNode, $nodeName);
             } else {
                 $element->addAttribute(\mb_strtolower($key, 'UTF-8'), $value);
             }
@@ -34,28 +41,34 @@ class Xml
     /**
      * @param $key
      * @param bool $upperNode
+     * @param string $nodeName
      */
-    private static function checkKey(&$key, bool $upperNode): void
+    private static function checkKey(&$key, bool $upperNode, string $nodeName = self::NODE_NAME): void
     {
-        $key = is_numeric($key) ? 'item' : $key;
+        $key = is_numeric($key) ? $nodeName : $key;
         $key = $upperNode ? \mb_strtoupper($key, 'UTF-8') : $key;
     }
 
     /**
-     * @param $data
+     * @param array $data
      * @param \SimpleXMLElement $element
      * @param false $upperNode
-     *
+     * @param string $nodeName
      * @return \SimpleXMLElement
      */
-    public static function arrayToXml($data, \SimpleXMLElement $element, bool $upperNode = false): \SimpleXMLElement
+    public static function arrayToXml(
+        array             $data,
+        \SimpleXMLElement $element,
+        bool              $upperNode = false,
+        string            $nodeName = self::NODE_NAME
+    ): \SimpleXMLElement
     {
         foreach ($data as $key => $value) {
-            self::checkKey($key, $upperNode);
+            self::checkKey($key, $upperNode, $nodeName);
 
             if (is_array($value)) {
                 $child = $element->addChild($key);
-                self::arrayToxml($value, $child, $upperNode);
+                self::arrayToxml($value, $child, $upperNode, $nodeName);
             } else {
                 $element->addChild($key, $value);
             }
