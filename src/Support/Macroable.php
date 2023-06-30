@@ -10,7 +10,7 @@ trait Macroable
      *
      * @var array
      */
-    protected static array $macros = [];
+    protected static $macros = [];
 
     /**
      * Register a custom macro.
